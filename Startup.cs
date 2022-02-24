@@ -33,6 +33,12 @@ namespace Bookshelf
                 options.UseSqlite(Configuration["ConnectionStrings:BookstoreDBConnection"]);
             });
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,11 +51,34 @@ namespace Bookshelf
 
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+
+                // not sure what this typepage is referring to ... may need to change it
+                endpoints.MapControllerRoute(
+                    "categorypage", 
+                    "{bookCategory}/P{pageNum}", 
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    "Paging",
+                    "P{pageNum}",
+                     new { Controller = "Home", action = "Index", pageNum = 1 }
+                );
+
+                endpoints.MapControllerRoute(
+                    "bookCategory", 
+                    "{bookCategory}", 
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
+
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
+
             });
         }
     }
