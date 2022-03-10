@@ -33,6 +33,9 @@ namespace Bookshelf.Models
         [Required(ErrorMessage = "Please enter a Country.")]
         public string Country { get; set; }
 
+        [BindNever]
+        public bool OrderShipped { get; set; }
+
 
     }
 }
