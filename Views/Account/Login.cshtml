@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+@model LoginModel
+
+<html>
+    <head>
+        <meta name="viewport" content="width-device-width" />
+        <title>Bookstore Login</title>
+        <link href="~/lib/css/bootstrap.min.css" rel="stylesheet" />
+
+    </head>
+<body>
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-brand m-1-2">BOOKSTORE</span>
+    </div>
+
+    
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <form method="post" asp-controller="Account" asp-action="Login">
+                            <div class="card-body p-5 text-center">
+                                <div class="mb-md-5 mt-md-4 pb-5">
+                                    <h2 class="fw-bold mb-2 text-uppercase">Admin Login</h2>
+                                    <p class="text-white-50 mb-5">Please enter your user name and password!</p>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label asp-for="Username">User Name: </label>
+                                        <input asp-for="Username" class="form-control" />
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <label asp-for="Password">Password: </label>
+                                        <input asp-for="Password" class="form-control" type="password" onpaste="return false" />
+                                    </div>
+
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Log In</button>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+    @*<div class="m-1 p-1">
+
+        <div class="text-danger" asp-validation-summary="All"></div>
+
+        <form method="post" asp-controller="Account" asp-action="Login">
+
+            <div class="form-group">
+                <label asp-for="Username">User Name: </label>
+                <input asp-for="Username" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password: </label>
+                <input asp-for="Password" class="form-control" type="password" onpaste="return false" />
+            </div>
+
+            <button class="btn btn-primary" type="submit">Log In</button>
+
+            <input type="hidden" asp-for="ReturnUrl" />
+
+        </form>
+    </div>*@
+</body>
+</html>
